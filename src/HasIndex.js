@@ -27,6 +27,12 @@ export default (Component, indexPropName) =>
     };
 
     render() {
-      return <Component {...this.props} />;
+      const indexProps = {
+        [indexPropName]: this.state.index,
+        [`${indexPropName}Decrement`]: this.handleDecrement,
+        [`${indexPropName}Increment`]: this.handleIncrement,
+      };
+
+      return <Component {...this.props} {...indexProps} />;
     }
   };
